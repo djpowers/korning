@@ -1,0 +1,25 @@
+<h1>Sales in Last 12 Months</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Invoice Number</th>
+      <th>Units Sold</th>
+      <th>Price Per Unit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales_last_12_months.each do |sale| %>
+      <tr>
+        <td><%= sale.sale_date %></td>
+        <td>$<%= sale.sale_amount %></td>
+        <td><%= sale.invoice_no %></td>
+        <td><%= sale.units_sold %></td>
+        <td>$<%= ("%.2f" % (sale.sale_amount / sale.units_sold)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
