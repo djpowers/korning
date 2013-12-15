@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20131213221745) do
   end
 
   create_table "sales", force: true do |t|
-    t.string   "product_name"
     t.date     "sale_date"
     t.decimal  "sale_amount"
     t.integer  "units_sold"
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 20131213221745) do
     t.datetime "updated_at"
     t.integer  "employee_id"
     t.integer  "customer_id"
+    t.string   "product_name"
   end
 
 end

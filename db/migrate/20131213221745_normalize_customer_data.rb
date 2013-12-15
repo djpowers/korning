@@ -13,6 +13,7 @@ class NormalizeCustomerData < ActiveRecord::Migration
       sale.customer_id = customer.id
       sale.save
     end
+
     remove_column :sales, :customer_and_account_no
   end
 
