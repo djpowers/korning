@@ -1,0 +1,32 @@
+<h1><%= @employee.full_name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @employee.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <th>Sale Date</th>
+    <th>Sale Amount</th>
+    <th>Invoice Number</th>
+  </thead>
+  <tbody>
+    <% @sales_history.each do |sale| %>
+      <tr>
+        <td><%= sale.sale_date %></td>
+        <td><%= sale.sale_amount %></td>
+        <td><%= sale.invoice_no %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -11,7 +11,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.full_name %></td>
+        <td><%= link_to employee.full_name, "/employees/#{employee.id}"  %></td>
         <td><%= link_to employee.email, "mailto:#{employee.email}" %></td>
       </tr>
     <% end %>

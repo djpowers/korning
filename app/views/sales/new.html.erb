@@ -1,0 +1,53 @@
+<h1>New Sale</h1>
+
+<%= form_for(@sale) do |f| %>
+  <% if @sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% @sale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_field :sale_date %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :sale_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :units_sold %><br>
+    <%= f.number_field :units_sold %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_number %><br>
+    <%= f.text_field :invoice_no %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_frequency %><br>
+    <%= f.text_field :invoice_frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :employee %><br>
+    <%= f.select(:employee_id, options_for_select(@employees_dropdown_list))%>
+  </div>
+  <div class="field">
+    <%= f.label :customer %><br>
+    <%= f.select(:customer_id, options_for_select(@customers_dropdown_list))%>
+  </div>
+  <div class="field">
+    <%= f.label :product %><br>
+    <%= f.select(:product_id, options_for_select(@products_dropdown_list))%>
+  </div>
+  <div class="actions">
+    <%= f.submit :Submit! %>
+  </div>
+
+
+<% end %>
