@@ -35,15 +35,15 @@
   </div>
   <div class="field">
     <%= f.label :employee %><br>
-    <%= f.select(:employee_id, options_for_select(@employees_dropdown_list))%>
+    <%= f.select(:employee_id, options_for_select(employees_dropdown_list))%>
   </div>
   <div class="field">
     <%= f.label :customer %><br>
-    <%= f.select(:customer_id, options_for_select(@customers_dropdown_list))%>
+    <%= f.select(:customer_id, options_for_select(customers_dropdown_list))%>
   </div>
   <div class="field">
     <%= f.label :product %><br>
-    <%= f.select(:product_id, options_for_select(@products_dropdown_list))%>
+    <%= f.select(:product_id, options_for_select(products_dropdown_list))%>
   </div>
   <div class="actions">
     <%= f.submit :Submit! %>
