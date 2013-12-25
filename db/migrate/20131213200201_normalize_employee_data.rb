@@ -3,7 +3,6 @@ class NormalizeEmployeeData < ActiveRecord::Migration
     add_column :sales, :employee_id, :integer
 
     Sale.find_each do |sale|
-
       employee_info = sale.employee.split(' (')
       employee = Employee.find_or_initialize_by(full_name: employee_info[0])
       employee.full_name = employee_info[0]

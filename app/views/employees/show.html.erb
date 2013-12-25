@@ -12,21 +12,40 @@
       <td><%= @employee.email %></td>
     </tr>
   </tbody>
-</table>
+  </table>
 
-<table>
-  <thead>
-    <th>Sale Date</th>
-    <th>Sale Amount</th>
-    <th>Invoice Number</th>
-  </thead>
-  <tbody>
-    <% @sales_history.each do |sale| %>
-      <tr>
-        <td><%= sale.sale_date %></td>
-        <td><%= sale.sale_amount %></td>
-        <td><%= sale.invoice_no %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<script>
+  var dataArray = <%= @employee.monthly_sales %>;
+  var height = 500;
+  var width = 800;
+  var barWidth = 50;
+  var topMargin = 20;
+  var sortedDataArray = <%= @employee.monthly_sales %>.sort(function(a,b) {return a - b });
+
+  var heightScale = d3.scale.linear()
+                      .domain([d3.min(dataArray)/2, d3.max(dataArray)])
+                      .range([0, height - topMargin]);
+
+  var colorScale = d3.scale.linear()
+                      .domain([0, d3.max(dataArray)])
+                      .range(["orange", "red"]);
+
+  var canvas = d3.select("body")
+                  .append("svg")
+                    .attr("height", height)
+                    .attr("width", width)
+                    .append("g")
+                      .attr("transform","translate(20,0)");
+
+  var bars = canvas.selectAll("rect")
+                    .data(dataArray)
+                    .enter()
+                    .append("rect")
+                      .attr("width", barWidth)
+                      .attr("height", function(d) { return heightScale(d) ;} )
+                      .attr("y", function(d) { return height + topMargin - heightScale(d) ;})
+                      .attr("x", function(d, i) { return i * 60; })
+                      .attr("fill", function(d)  { return colorScale(d) ;});
+
+</script>
+
